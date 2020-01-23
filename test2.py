@@ -41,4 +41,73 @@ def p44():
             pass
     print(sumi)
 
-p44()
+
+def p46():
+    List = [1, 2, 3, 4]
+    List.append(5)
+    print(List)
+
+
+def p47():
+    List1 = ['b', 'c', 'a']
+    List2 = [4, 2, 3, 1]
+    List1.sort()
+    List1.reverse()
+    List2.sort()
+    print(List1)
+    print(List2)
+
+
+def p49():
+    List = [2, 1, 2, 3, 4]
+    List.remove(1)
+    print(List)
+
+    List = [1, 1, 1, 2, 3]
+    print(List.count(1))
+
+    List = [1, 2]
+    List.extend([3, 4])
+    print(List)
+
+    List = [1, 2, 3]
+    List.insert(4, 5)
+    print(List)
+    print(List.index(0))
+    pass
+
+
+def sumEachNum(n):
+    sumValue = n
+    while n > 0:
+        sumValue += n % 10
+        n //= 10
+    return sumValue
+
+
+rangeNum = 15
+
+generatorExist = [sumEachNum(i) for i in range(rangeNum)]
+print(generatorExist)
+
+generatorNoExist = [i for i in range(rangeNum) if not (i in generatorExist)]
+print(generatorNoExist)
+
+print(sum(generatorNoExist))
+print()
+
+def getSelfNumber(n):
+    sumValue = n
+    while n > 0:
+        print("값 {}".format(sumValue))
+        sumValue += n % 10
+        print("나머지 {}".format(n % 10))
+        # 소수점까지 계산해줌
+        # n = n / 10 
+        n = n // 10
+        print("나누기 {}".format(n))
+        pass
+    return sumValue
+
+print(getSelfNumber(rangeNum))
+# p44()
