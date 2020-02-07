@@ -69,20 +69,27 @@ def p87(score):
     numList = []
     domainIndexList = []
     for i, val in enumerate(score):
+        
         if(val.isdecimal()): # 숫자인지 검사
-            numList.append(val)
+            if score[i-1].isdecimal() == False:
+                numList.append(i)
         if(val.isalpha()):
             domainIndexList.append(i)
     
     # print(numList)
-    print(domainIndexList)
+    # print(domainIndexList)
+    
+    split = []
+    for i, val in enumerate(numList):
+        if len(numList) != i+1:
+            split.append(score[val:numList[i+1]])
+        else:
+            split.append(score[val:])
+    # print(split)
 
-    for i in domainIndexList:
-        print(i)
-        print(score[:i])
-
-    split = re.findall('[0-9]{1,2}[^0-9][*#]?', score)
-    print(split)
+    # split = re.findall('[\d]{1,2}[^\d][*#]?', score)
+    split = re.findall('\d{1,2}\w{1}[*#]?', score)
+    
 
 
 p87('1S2D*3T')
