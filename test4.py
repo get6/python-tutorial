@@ -69,16 +69,16 @@ def p87(score):
     numList = []
     domainIndexList = []
     for i, val in enumerate(score):
-        
-        if(val.isdecimal()): # 숫자인지 검사
+
+        if(val.isdecimal()):  # 숫자인지 검사
             if score[i-1].isdecimal() == False:
                 numList.append(i)
         if(val.isalpha()):
             domainIndexList.append(i)
-    
+
     # print(numList)
     # print(domainIndexList)
-    
+
     split = []
     for i, val in enumerate(numList):
         if len(numList) != i+1:
@@ -89,7 +89,40 @@ def p87(score):
 
     # split = re.findall('[\d]{1,2}[^\d][*#]?', score)
     split = re.findall('\d{1,2}\w{1}[*#]?', score)
-    
+    print(dartGame(split))
 
+def dartGame(split):
+    eachSum = []
+    for s in split:
+        num = ''
+        for e in s:
+            if e == '*': # 문자 '*'인 경우
+                if len(eachSum) > 1:
+                    eachSum[-2] *= 2 # 해당 번호 앞에도 두배
+                eachSum[-1] *= 2
+            elif e == '#': # 문자 '#'인 경우
+                eachSum[-1] *= -1
+            else: # 무조건 숫자 or 문자
+                if e.isnumeric():
+                    num += e # 문자열로 더해서 10을 표현할 수 있음
+                if e == 'S':
+                    eachSum.append(int(num) ** 1)
+                elif e == 'D':
+                    eachSum.append(int(num) ** 2)
+                elif e == 'T':
+                    eachSum.append(int(num) ** 3)
+    return sum(eachSum)
 
-p87('1S2D*3T')
+# p87('1S2D*3T')
+# p87('1D2S#10S')
+# p87('1D2S0T')
+# p87('1S*2T*3S')
+# p87('1D#2S*3S')
+
+string = "파이썬의 파이썬 함수인 정규표현식 함수에 대한 예제입니다."
+
+print(re.search('함수', string).start())
+print(re.search('함수', string).end())
+print(re.match('파이썬', string).start()) # 처음과 같은 지 확인
+print(re.findall('함수', string))
+
