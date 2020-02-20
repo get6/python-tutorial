@@ -113,12 +113,17 @@ def p102():
 
 
 def overturnList(argList):
+    print('\n'.join(str(i) for i in argList))
+    print(str(i) for i in argList)
+    # print(i for i in range(len(argList)))
     argListTmp = list(zip(argList[0], argList[1], argList[2], argList[3], argList[4]))
+    # argListTmp = list(zip(j for j in argList[i] for i in (len(argList))))
+    # argListTmp = list(zip(arg for i in argList for arg in i))
     return [list(argListTmp[i]) for i in range(len(argListTmp[0]))]
 
 
 def pung(argList):
-    argListTmp = [[] * 5 for i in range(0, 5)]
+    argListTmp = [[] for i in range(0, 5)]
     argListTmp = list(argList)
     for i in range(0, 5):
         if (len(set(argListTmp[i][0:5])) == 1) and not (0 in argListTmp[i][0:5]):
@@ -150,6 +155,7 @@ def p114():
     ]
 
     matrixTmp = [[] * 5 for i in range(0, 5)]
+    matrixTmp = [[] for i in range(0, 5)]
 
     isValidCalc = True
     while isValidCalc:
@@ -183,3 +189,36 @@ def p114():
 
 
 p114()
+
+
+def p118():
+    s = ""
+    print(len(s))
+    s = "문자열입니다ㅎ!aA"
+    print(len(s))
+    listA = []
+    print(len(listA))
+    listA = [1, "한글", 1.5]
+    print(len(listA))
+    tupleA = (1, 1, 2, 3)
+    print(len(tupleA))
+    setTupleA = set((1, 1, 2, 3, 2))  # 중복 제거
+    print(len(setTupleA))
+    setListA = set([1, 1, 2, 3])  # 중복 제거
+    print(len(setListA))
+
+
+# p118()
+
+
+def p119():
+    a = [5, 6, 7, 8, 9]
+    b = ["c", "d", "e", "f", "g"]
+    for x in zip(a, b):
+        print(x)
+
+    for x, y in zip(a, b):
+        print(x, y)
+
+
+# p119()
