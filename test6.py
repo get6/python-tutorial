@@ -113,30 +113,36 @@ def p102():
 
 
 def overturnList(argList):
-    print('\n'.join(str(i) for i in argList))
-    print(str(i) for i in argList)
-    # print(i for i in range(len(argList)))
-    argListTmp = list(zip(argList[0], argList[1], argList[2], argList[3], argList[4]))
-    # argListTmp = list(zip(j for j in argList[i] for i in (len(argList))))
-    # argListTmp = list(zip(arg for i in argList for arg in i))
+    # 2차원 배열을 받았다고 가정하면 
+    # 1차원 배열에 요소값이 2차원 배열에 요소값 위치로 옮겨지게 된다.
+    # 2차원 배열에 요소값은 1차원 배열에 순서로 적용이 된다.
+    # argListTmp = list(zip(argList[0], argList[1], argList[2], argList[3], argList[4]))
+    argListTmp = list(zip(*argList))
     return [list(argListTmp[i]) for i in range(len(argListTmp[0]))]
 
 
 def pung(argList):
-    argListTmp = [[] for i in range(0, 5)]
+    # argListTmp = [[] for i in range(0, 5)]
     argListTmp = list(argList)
+    # set(parameter) 들어온 인자에 중복되는 숫자를 줄여준다.
     for i in range(0, 5):
         if (len(set(argListTmp[i][0:5])) == 1) and not (0 in argListTmp[i][0:5]):
+            # 전부 다 같은 숫자인 경우와 임시변수에 0이 존재하지 않을 경우
             argListTmp[i][0:5] = [-1, -1, -1, -1, -1]
         if (len(set(argListTmp[i][0:4])) == 1) and not (0 in argListTmp[i][0:4]):
+            # 처음부터 4개까지 다 같은 숫자인 경우
             argListTmp[i][0:4] = [-1, -1, -1, -1]
         if (len(set(argListTmp[i][1:5])) == 1) and not (0 in argListTmp[i][1:5]):
+            # 1부터 4개까지 다 같은 숫자인 경우
             argListTmp[i][1:5] = [-1, -1, -1, -1]
         if (len(set(argListTmp[i][0:3])) == 1) and not (0 in argListTmp[i][0:3]):
+            # 처음부터 3개까지 다 같은 숫자인 경우
             argListTmp[i][0:3] = [-1, -1, -1]
         if (len(set(argListTmp[i][1:4])) == 1) and not (0 in argListTmp[i][1:4]):
+            # 1부터 3개까지 다 같은 숫자인 경우
             argListTmp[i][1:4] = [-1, -1, -1]
         if (len(set(argListTmp[i][2:5])) == 1) and not (0 in argListTmp[i][2:5]):
+            # 2부터 3개까지 다 같은 숫자인 경우
             argListTmp[i][2:5] = [-1, -1, -1]
     return argListTmp
 
@@ -154,7 +160,7 @@ def p114():
         [4, 2, 3, 3, 2],
     ]
 
-    matrixTmp = [[] * 5 for i in range(0, 5)]
+    # matrixTmp = [[] * 5 for i in range(0, 5)]
     matrixTmp = [[] for i in range(0, 5)]
 
     isValidCalc = True
