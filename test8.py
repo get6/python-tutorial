@@ -49,3 +49,32 @@ x = "안녕".encode("UTF-8")
 print(x)
 y= x.decode("UTF-8")
 print(y)
+
+numbers = range(2, 11, 2)
+ 
+for x in numbers:
+    print(x)
+ 
+for x in range(1, 11, 2):
+    print(x)
+
+a = []
+b = list()
+if a == b:
+    print(True)
+else:
+    print(False)
+
+a = ["AB", 10, False]
+
+mylist = "This is a book That is a pencil".split()
+i = mylist.index('book')  # i = 3
+n = mylist.count('is')    # n = 2
+print(i, n)
+
+# [표현식 for 요소 in 컬렉션 [if 조건식]]
+list = [n ** 2 for n in range(10) if n % 3 == 0]
+print(list)
+# 출력: [0, 9, 36, 81]
+list = [n for n in range(10)]
+print(list)
