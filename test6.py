@@ -113,7 +113,7 @@ def p102():
 
 
 def overturnList(argList):
-    # 2차원 배열을 받았다고 가정하면 
+    # 2차원 배열을 받았다고 가정하면
     # 1차원 배열에 요소값이 2차원 배열에 요소값 위치로 옮겨지게 된다.
     # 2차원 배열에 요소값은 1차원 배열에 순서로 적용이 된다.
     # argListTmp = list(zip(argList[0], argList[1], argList[2], argList[3], argList[4]))
@@ -126,6 +126,27 @@ def pung(argList):
     argListTmp = list(argList)
     # set(parameter) 들어온 인자에 중복되는 숫자를 줄여준다.
     for i in range(0, 5):
+        # if 0 in argListTmp[i][0:5]:
+        #     print(argListTmp[i])
+        # if len(set(argListTmp[i][0:5])) == 1:
+        #     print("[0:5]", end=" ")
+        #     print(argListTmp[i])
+        # if len(set(argListTmp[i][0:4])) == 1:
+        #     print("[0:4]", end=" ")
+        #     print(argListTmp[i])
+        # if len(set(argListTmp[i][1:5])) == 1:
+        #     print("[1:5]", end=" ")
+        #     print(argListTmp[i])
+        # if len(set(argListTmp[i][0:3])) == 1:
+        #     print("[0:3]", end=" ")
+        #     print(argListTmp[i])
+        # if len(set(argListTmp[i][1:4])) == 1:
+        #     print("[1:4]", end=" ")
+        #     print(argListTmp[i])
+        # if len(set(argListTmp[i][2:5])) == 1:
+        #     print("[2:5]", end=" ")
+        #     print(argListTmp[i])
+
         if (len(set(argListTmp[i][0:5])) == 1) and not (0 in argListTmp[i][0:5]):
             # 전부 다 같은 숫자인 경우와 임시변수에 0이 존재하지 않을 경우
             argListTmp[i][0:5] = [-1, -1, -1, -1, -1]
@@ -166,15 +187,16 @@ def p114():
     isValidCalc = True
     while isValidCalc:
         matrixTmp = list(matrix)
-        verticalMatrix = overturnList(matrixTmp)
-        verticalMatrix = pung(verticalMatrix)
-        verticalMatrix = overturnList(verticalMatrix)
+        verticalMatrix = overturnList(matrixTmp)  # 요소 변경
+        verticalMatrix = pung(verticalMatrix)  # 요소 변경된 리스트 중 같은 행에 3개이상 동일 값 -1로 변경
+        verticalMatrix = overturnList(verticalMatrix)  # 요소 원위치
 
-        matrix = pung(matrix)
+        matrix = pung(matrix)  # 입력된 리스트 중 같은 행에 3개이상 동일 값 -1로 변경
 
-        isValidCalc = False
+        isValidCalc = False # False가 되면 반복을 멈춤
         for i in range(0, 5):
             for j in range(0, 5):
+                # 펑이 수행된 기존 리스트와 펑이 수행된 요소가 바뀌고 원위치된 리스트 중 같은 요소값에서 -1이 있나 검사
                 if (matrix[i][j] == -1) or (verticalMatrix[i][j] == -1):
                     matrix[i][j] = -1
                     isValidCalc = True
@@ -183,8 +205,10 @@ def p114():
         verticalMatrix = overturnList(matrixTmp)
         for i in range(0, 5):
             if -1 in verticalMatrix[i]:
+                # i행의 -1인 갯수 찾기
                 cnt = verticalMatrix[i].count(-1)
                 for j in range(0, cnt):
+                    # i행의 -1을 지우고 0번째 요소에 0삽입
                     verticalMatrix[i].remove(-1)
                     verticalMatrix[i].insert(0, 0)
         matrix = overturnList(verticalMatrix)
