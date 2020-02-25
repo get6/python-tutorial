@@ -78,3 +78,102 @@ print(list)
 # 출력: [0, 9, 36, 81]
 list = [n for n in range(10)]
 print(list)
+
+sum = 0
+for i in range(11): # 10까지
+    sum += i
+print(sum)
+
+t = ("AB", 10, False) # Tuple은 immutable 타입
+print(t)
+# t[0] = "BA" # 'tuple' object does not support item assignment
+print(t[0])
+print(t[1])
+print(t[2])
+t1 = (123)
+print(type(t1))  # int 타입
+ 
+t2 = (123,)
+print(type(t2))  # tuple 타입
+
+firstname, lastname = ("John", "Kim")
+print(lastname, ",", firstname)
+# 출력: Kim, John
+
+# 1. Tuple List로부터 dict 생성
+persons = [('김기수', 30), ('홍대길', 35), ('강찬수', 25)]
+mydict = dict(persons)
+# mydict["홍대길"] = 130 # dict 클래스로 변하게되면 수정 가능
+age = mydict["홍대길"]
+print(age)   # 35
+ 
+# 2. Key=Value 파라미터로부터 dict 생성
+scores = dict(a=80, b=90, c=85)
+print(scores['b'])  #90
+
+scores = {"철수": 90, "민수": 85, "영희": 80}
+v = scores.get("민수")  # 85
+print(v)
+v = scores.get("길동")  # None
+print(v)
+# v = scores["길동"]    # 에러 발생
+ 
+# 멤버쉽연산자 in 사용
+if "길동" in scores:
+    print(scores["길동"])
+ 
+scores.clear()  # 모두 삭제
+print(scores)
+
+persons = [('김기수', 30), ('홍대길', 35), ('강찬수', 25)]
+mydict = dict(persons)
+print(mydict)
+mydict.update({'홍대길':33,'강찬수':26})
+print(mydict)
+
+# set 정의
+myset = { 1, 1, 3, 5, 5 }
+print(myset)    # 출력: {1, 3, 5}
+ 
+# 리스트를 set으로 변환
+mylist = ["A", "A", "B", "B", "B"]
+s = set(mylist)
+print(s)        # 출력: {'A', 'B'}
+
+myset = {1, 3, 5}
+ 
+# 하나만 추가
+myset.add(7)
+print(myset)
+ 
+# 여러 개 추가
+myset.update({4,2,10})
+print(myset)
+ 
+# 하나만 삭제
+myset.remove(1)
+print(myset)
+ 
+# 모두 삭제
+myset.clear()
+print(myset)
+
+a = {1, 3, 5}
+b = {1, 2, 5}
+ 
+# 교집합
+i = a & b
+# i = a.intersection(b)
+print(i)
+ 
+# 합집합
+u = a | b
+# u = a.union(b)
+print(u)
+ 
+# 차집합
+d = a - b
+# d = a.difference(b)
+print(d)
+
+# 함수전 까지
