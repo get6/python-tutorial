@@ -39,6 +39,7 @@ total = 0
 # raise 를 사용한 예
 if total < 0 :
     raise Exception('Total Error')
+    # raise Exception, 'Total Error'
 
 try:
     fp = open('test.txt', 'r')
